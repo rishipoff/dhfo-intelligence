@@ -8,3 +8,6 @@ __pycache__/
 __pycache__/
 *.pyc
 *.egg-info/
+
+# refresh job logs (see scripts/refresh_and_push.sh)
+scripts/*.log
