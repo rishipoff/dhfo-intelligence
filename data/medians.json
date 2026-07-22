@@ -1,0 +1,230 @@
+{
+  "as_of": "14-Jul-2026",
+  "method": "yield_FY = DPU_FY / fiscal-year-end (31-Mar) close; medians over available FYs. current_yield = latest FY DPU / latest price. Below median = rich, above = cheap.",
+  "invits": [
+    {
+      "ticker": "NHIT",
+      "name": "NHAI (NHIT)",
+      "class": "invit",
+      "median_3yr_yield": 0.0507,
+      "median_5yr_yield": 0.0389,
+      "current_yield": 0.0675,
+      "yields_by_fy": {},
+      "source": "workbook"
+    },
+    {
+      "ticker": "CUBEINVIT",
+      "name": "Cube",
+      "class": "invit",
+      "median_3yr_yield": 0.0783,
+      "median_5yr_yield": 0.047,
+      "current_yield": 0.093,
+      "yields_by_fy": {},
+      "source": "workbook"
+    },
+    {
+      "ticker": "VERTIS",
+      "name": "Vertis",
+      "class": "invit",
+      "median_3yr_yield": 0.1236,
+      "median_5yr_yield": 0.1037,
+      "current_yield": 0.1091,
+      "yields_by_fy": {},
+      "source": "workbook"
+    },
+    {
+      "ticker": "543925",
+      "name": "Maple",
+      "class": "invit",
+      "median_3yr_yield": 0.0398,
+      "median_5yr_yield": 0.025,
+      "current_yield": 0.1042,
+      "yields_by_fy": {},
+      "source": "workbook"
+    },
+    {
+      "ticker": "INDUSINVIT",
+      "name": "Indus (ex-Bharat Hwys)",
+      "class": "invit",
+      "median_3yr_yield": null,
+      "median_5yr_yield": null,
+      "current_yield": 0.10400616332819722,
+      "yields_by_fy": {
+        "2026": 0.1094
+      },
+      "source": "scorecard"
+    },
+    {
+      "ticker": "IRBINVIT",
+      "name": "IRB",
+      "class": "invit",
+      "median_3yr_yield": 0.11959934220361788,
+      "median_5yr_yield": 0.11959934220361788,
+      "current_yield": 0.1064516129032258,
+      "yields_by_fy": {
+        "2022": 0.1736,
+        "2023": 0.1193,
+        "2024": 0.1196,
+        "2025": 0.16,
+        "2026": 0.1095
+      },
+      "source": "scorecard"
+    },
+    {
+      "ticker": "ROADSTAR",
+      "name": "Roadstar",
+      "class": "invit",
+      "median_3yr_yield": 0.0757,
+      "median_5yr_yield": 0.0454,
+      "current_yield": 0.0848,
+      "yields_by_fy": {},
+      "source": "workbook"
+    },
+    {
+      "ticker": "ANANTAM",
+      "name": "Anantam",
+      "class": "invit",
+      "median_3yr_yield": 0.016,
+      "median_5yr_yield": 0.0096,
+      "current_yield": 0.0481,
+      "yields_by_fy": {},
+      "source": "workbook"
+    },
+    {
+      "ticker": "INDIGRID",
+      "name": "IndiGrid",
+      "class": "invit",
+      "median_3yr_yield": 0.1061906913691821,
+      "median_5yr_yield": 0.10016322896572191,
+      "current_yield": 0.08948545861297538,
+      "yields_by_fy": {
+        "2022": 0.0867,
+        "2023": 0.1002,
+        "2024": 0.1062,
+        "2025": 0.1089,
+        "2026": 0.0967
+      },
+      "source": "scorecard"
+    },
+    {
+      "ticker": "PGINVIT",
+      "name": "PGInvIT",
+      "class": "invit",
+      "median_3yr_yield": 0.13305244483867393,
+      "median_5yr_yield": 0.12670256572695598,
+      "current_yield": 0.12371134020618557,
+      "yields_by_fy": {
+        "2022": 0.0896,
+        "2023": 0.0979,
+        "2024": 0.1267,
+        "2025": 0.1579,
+        "2026": 0.1331
+      },
+      "source": "scorecard"
+    },
+    {
+      "ticker": "CAPINVIT",
+      "name": "Capital Infra",
+      "class": "invit",
+      "median_3yr_yield": 0.1572,
+      "median_5yr_yield": 0.1572,
+      "current_yield": 0.1572,
+      "yields_by_fy": {},
+      "source": "workbook"
+    },
+    {
+      "ticker": "RIIT",
+      "name": "Raajmarg (NHAI)",
+      "class": "invit",
+      "median_3yr_yield": null,
+      "median_5yr_yield": null,
+      "current_yield": null,
+      "yields_by_fy": {},
+      "source": "workbook"
+    },
+    {
+      "ticker": "CITIUSINVT",
+      "name": "Citius TransNet",
+      "class": "invit",
+      "median_3yr_yield": null,
+      "median_5yr_yield": null,
+      "current_yield": null,
+      "yields_by_fy": {},
+      "source": "workbook"
+    }
+  ],
+  "reits": [
+    {
+      "ticker": "EMBASSY",
+      "name": "Embassy",
+      "class": "reit",
+      "median_3yr_yield": 0.06014894477622594,
+      "median_5yr_yield": 0.06014894477622594,
+      "current_yield": 0.05642983102301391,
+      "yields_by_fy": {
+        "2022": 0.0585,
+        "2023": 0.0695,
+        "2024": 0.0577,
+        "2025": 0.063,
+        "2026": 0.0601
+      },
+      "source": "scorecard"
+    },
+    {
+      "ticker": "MINDSPACE",
+      "name": "Mindspace",
+      "class": "reit",
+      "median_3yr_yield": 0.05558933379657778,
+      "median_5yr_yield": 0.05558933379657778,
+      "current_yield": 0.04886409736308316,
+      "yields_by_fy": {
+        "2022": 0.0531,
+        "2023": 0.0584,
+        "2024": 0.0556,
+        "2025": 0.0586,
+        "2026": 0.0536
+      },
+      "source": "scorecard"
+    },
+    {
+      "ticker": "BIRET",
+      "name": "Brookfield",
+      "class": "reit",
+      "median_3yr_yield": 0.06646410938093429,
+      "median_5yr_yield": 0.06968983117393011,
+      "current_yield": 0.06294117647058824,
+      "yields_by_fy": {
+        "2022": 0.0706,
+        "2023": 0.0722,
+        "2024": 0.0697,
+        "2025": 0.0665,
+        "2026": 0.0661
+      },
+      "source": "scorecard"
+    },
+    {
+      "ticker": "NXST",
+      "name": "Nexus Select",
+      "class": "reit",
+      "median_3yr_yield": 0.06021619470787188,
+      "median_5yr_yield": null,
+      "current_yield": 0.055030303030303034,
+      "yields_by_fy": {
+        "2024": 0.0554,
+        "2025": 0.0642,
+        "2026": 0.0602
+      },
+      "source": "scorecard"
+    },
+    {
+      "ticker": "KRT",
+      "name": "Knowledge Realty",
+      "class": "reit",
+      "median_3yr_yield": 0.0409,
+      "median_5yr_yield": 0.0409,
+      "current_yield": 0.0409,
+      "yields_by_fy": {},
+      "source": "workbook"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "as_of": "14-Jul-2026",
+  "note": "Reference / fallback price snapshot. Serves two purposes: (1) the sanity-gate reference band in feeds/chain.py — a live feed price >15% away from these is rejected as suspect; (2) the last-resort manual price for names no live feed covers. Values derived independently from the 14-Jul-2026 workbook snapshot as dpu_fy / current_yield, so they are independent of live Yahoo. Update by hand as fresh quotes appear. RIIT/CITIUSINVT omitted — no DPU / current_yield yet.",
+  "prices": {
+    "NHIT": 167.85,
+    "CUBEINVIT": 148.06,
+    "VERTIS": 109.99,
+    "543925": 142.03,
+    "INDUSINVIT": 129.8,
+    "IRBINVIT": 62.0,
+    "ROADSTAR": 62.5,
+    "ANANTAM": 103.95,
+    "INDIGRID": 178.8,
+    "PGINVIT": 97.0,
+    "CAPINVIT": 73.79,
+    "EMBASSY": 447.99,
+    "MINDSPACE": 493.0,
+    "BIRET": 340.0,
+    "NXST": 165.02,
+    "KRT": 115.89
+  }
+}

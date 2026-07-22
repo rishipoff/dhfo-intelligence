@@ -1,0 +1,909 @@
+{
+  "as_of": "14-Jul-2026",
+  "currency": "INR",
+  "unit": "per unit",
+  "tax_rates_applied": {
+    "interest": 0.39,
+    "taxable_dividend": 0.3588,
+    "exempt_dividend": 0.0,
+    "capital_repayment": 0.0,
+    "other": 0.0,
+    "unclassified": 0.39
+  },
+  "keep_factors": {
+    "interest": 0.61,
+    "taxable_dividend": 0.6412,
+    "exempt_dividend": 1.0,
+    "capital_repayment": 1.0,
+    "other": 1.0,
+    "unclassified": 0.61
+  },
+  "post_tax_method": "post_tax = sum(component * (1 - tax_rate[component])); FY2026-27 resident-individual basis",
+  "gsec_benchmark": {
+    "pre_tax": 0.0672,
+    "post_tax": 0.041
+  },
+  "notes": "DPU components sourced from NSE filing archive / trust IR (see per-quarter source). Trusts with quarters_tracked=false have no public component split yet - post-tax not computed. TODO: refresh each quarter as new distributions are declared.",
+  "invits": [
+    {
+      "ticker": "NHIT",
+      "exchange_ticker": "NSE:NHIT",
+      "name": "NHAI (NHIT)",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 11.33,
+      "dpu_fy_from_quarters": null,
+      "fy27_guidance": null,
+      "tax_status": "n/a — component splits not tracked",
+      "quarters": [],
+      "quarters_tracked": false,
+      "flags": "Private placement; CMP 14-Jul-26 NSE live; FY26 actual per NHIT distribution summary; FY28E per SK"
+    },
+    {
+      "ticker": "CUBEINVIT",
+      "exchange_ticker": "NSE:CUBEINVIT",
+      "name": "Cube",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 13.77,
+      "dpu_fy_from_quarters": null,
+      "fy27_guidance": null,
+      "tax_status": "n/a — component splits not tracked",
+      "quarters": [],
+      "quarters_tracked": false,
+      "flags": "⚠ CMP stale 16-Apr-26 (illiquid); FY26 highest-ever, official PR; FY28E per SK"
+    },
+    {
+      "ticker": "VERTIS",
+      "exchange_ticker": "NSE:VERTIS",
+      "name": "Vertis",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 12,
+      "dpu_fy_from_quarters": null,
+      "fy27_guidance": null,
+      "tax_status": "n/a — component splits not tracked",
+      "quarters": [],
+      "quarters_tracked": false,
+      "flags": "CORRECTED: BSE 543925 is Maple, not Vertis — SK CMP 142.5 was Maple quote. NSE:VERTIS ₹110 (14-Jul-26); FY28E per SK"
+    },
+    {
+      "ticker": "543925",
+      "exchange_ticker": "BOM:543925",
+      "name": "Maple",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 14.8,
+      "dpu_fy_from_quarters": null,
+      "fy27_guidance": null,
+      "tax_status": "n/a — component splits not tracked",
+      "quarters": [],
+      "quarters_tracked": false,
+      "flags": "⚠ FY26 DPU 14.80 UNVERIFIED (AR coverage; unreconciled with unit count; H1 nil) — pull maplehighways.com board outcomes; CMP 3-Jul close, BSE-only, illiquid; FY28E per SK"
+    },
+    {
+      "ticker": "INDUSINVIT",
+      "exchange_ticker": "NSE:INDUSINVIT",
+      "name": "Indus (ex-Bharat Hwys)",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 13.5,
+      "dpu_fy_from_quarters": 13.5,
+      "fy27_guidance": 14,
+      "tax_status": "TAXABLE — all SPVs opted 115BAA (dividend nil/tiny FY26)",
+      "quarters": [
+        {
+          "quarter": "Q1 FY26",
+          "total": 3.25,
+          "components": {
+            "interest": 2.78,
+            "taxable_dividend": 0.04,
+            "exempt_dividend": 0,
+            "capital_repayment": 0.43,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 2.1514,
+          "record_date": "04-Aug-25",
+          "source": "https://www.indusinvit.com/pdf/financial-results/2025/Record-date.pdf"
+        },
+        {
+          "quarter": "Q2 FY26",
+          "total": 3.35,
+          "components": {
+            "interest": 2.51,
+            "taxable_dividend": 0.1,
+            "exempt_dividend": 0,
+            "capital_repayment": 0.74,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 2.3352,
+          "record_date": "12-Nov-25",
+          "source": "https://www.indusinvit.com/pdf/financial-results/2025/Record_date-Q2.pdf"
+        },
+        {
+          "quarter": "Q3 FY26",
+          "total": 3.4,
+          "components": {
+            "interest": 1.44,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0,
+            "capital_repayment": 1.96,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 2.8384,
+          "record_date": "06-Feb-26",
+          "source": "https://www.indusinvit.com/pdf/financial-results/2025/Record_date-Q3.pdf"
+        },
+        {
+          "quarter": "Q4 FY26",
+          "total": 3.5,
+          "components": {
+            "interest": 1.01,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0,
+            "capital_repayment": 2.49,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 3.1061,
+          "record_date": "05-May-26",
+          "source": "https://www.indusinvit.com/pdf/financial-results/2025/Distribution-Q4.pdf"
+        }
+      ],
+      "quarters_tracked": true,
+      "flags": "FY27 min guidance ₹14; FY22-24 pre-listing per SK; renamed from Bharat Highways w.e.f. 23-Jan-25"
+    },
+    {
+      "ticker": "IRBINVIT",
+      "exchange_ticker": "NSE:IRBINVIT",
+      "name": "IRB",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 6.6,
+      "dpu_fy_from_quarters": 6.6,
+      "fy27_guidance": 6.4,
+      "tax_status": "EXEMPT — Q4 FY26 filing labels \"exempt dividend\"",
+      "quarters": [
+        {
+          "quarter": "Q1 FY26",
+          "total": 2,
+          "components": {
+            "interest": 1.57,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0.28,
+            "capital_repayment": 0.15,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 1.3877,
+          "record_date": "24-Jul-25",
+          "source": "https://trendlyne.com/equity/Dividend/IRBINVIT/54142/irb-invit-fund-dividend/"
+        },
+        {
+          "quarter": "Q2 FY26",
+          "total": 1.5,
+          "components": {
+            "interest": 0.9,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0.12,
+            "capital_repayment": 0.48,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 1.149,
+          "record_date": "18-Nov-25",
+          "source": "https://nsearchives.nseindia.com/corporate/ixbrl/INTEGRATED_FILING_RESULTIR_128817_17112025123128_iXBRL_WEB.html"
+        },
+        {
+          "quarter": "Q3 FY26",
+          "total": 1.5,
+          "components": {
+            "interest": 0.95,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0.11,
+            "capital_repayment": 0.44,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 1.1295,
+          "record_date": "16-Feb-26",
+          "source": "https://scanx.trade/stock-market-news/earnings/irb-invit-fund-board-meeting-scheduled-for-february-11-2026-to-consider-q3fy26-results-and-distribution-declaration/31942825"
+        },
+        {
+          "quarter": "Q4 FY26",
+          "total": 1.6,
+          "components": {
+            "interest": 1.44,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0.04,
+            "capital_repayment": 0.12,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 1.0384,
+          "record_date": "20-May-26",
+          "source": "https://nsearchives.nseindia.com/corporate/IRBINVIT_15052026150410_Outcome_of_BM_SD.pdf"
+        }
+      ],
+      "quarters_tracked": true,
+      "flags": "⚠ FY27 guide thinly sourced; unit base 58→128 cr Oct-Nov 25; AGM 23-Jul-26"
+    },
+    {
+      "ticker": "ROADSTAR",
+      "exchange_ticker": "NSE:ROADSTAR",
+      "name": "Roadstar",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 5.3,
+      "dpu_fy_from_quarters": null,
+      "fy27_guidance": null,
+      "tax_status": "n/a — component splits not tracked",
+      "quarters": [],
+      "quarters_tracked": false,
+      "flags": "⚠ CMP stale 29-May-26 (illiquid); single FY26 distribution, record 30-May-26; FY28E per SK"
+    },
+    {
+      "ticker": "ANANTAM",
+      "exchange_ticker": "NSE:ANANTAM",
+      "name": "Anantam",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 5,
+      "dpu_fy_from_quarters": 5.0,
+      "fy27_guidance": null,
+      "tax_status": "⚠ not stated — treated TAXABLE (conservative)",
+      "quarters": [
+        {
+          "quarter": "Q3 FY26",
+          "total": 2.5,
+          "components": {
+            "interest": 1.08,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0,
+            "capital_repayment": 1.415,
+            "other": 0.005,
+            "unclassified": 0
+          },
+          "post_tax": 2.0788,
+          "record_date": "16-Feb-26",
+          "source": "https://www.whalesbook.com/news/English/transportation/Anantam-InvIT-Q3-FY26-indian-rupee1238-Cr-Revenue-indian-rupee1056-Cr-EBITDA-indian-rupee250-Unit-Payout/698c9022fa94ce7dec495b7b"
+        },
+        {
+          "quarter": "Q4 FY26",
+          "total": 2.5,
+          "components": {
+            "interest": 0.4141,
+            "taxable_dividend": 2.0828,
+            "exempt_dividend": 0,
+            "capital_repayment": 0,
+            "other": 0.0031,
+            "unclassified": 0
+          },
+          "post_tax": 1.5912,
+          "record_date": "22-May-26",
+          "source": "https://scanx.trade/stock-market-news/companies/anantam-highways-declares-2-50-unit-distribution/40760134"
+        }
+      ],
+      "quarters_tracked": true,
+      "flags": "Listed 16-Oct-25; FY26 = 2 distributions (SK FY26E was 6.76); annualised ~10.0; first AGM 24-Jul-26"
+    },
+    {
+      "ticker": "INDIGRID",
+      "exchange_ticker": "NSE:INDIGRID",
+      "name": "IndiGrid",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 16,
+      "dpu_fy_from_quarters": 16,
+      "fy27_guidance": 16.48,
+      "tax_status": "TAXABLE generally — SPVs ex-PrKTCL/TSETPL opted 115BAA",
+      "quarters": [
+        {
+          "quarter": "Q1 FY26",
+          "total": 4,
+          "components": {
+            "interest": 1.5989,
+            "taxable_dividend": 0.167,
+            "exempt_dividend": 0,
+            "capital_repayment": 2.135,
+            "other": 0.0991,
+            "unclassified": 0
+          },
+          "post_tax": 3.3165,
+          "record_date": "29-Jul-25",
+          "source": "https://www.indigrid.co.in/investor/unit-information/"
+        },
+        {
+          "quarter": "Q2 FY26",
+          "total": 4,
+          "components": {
+            "interest": 3.0984,
+            "taxable_dividend": 0.0907,
+            "exempt_dividend": 0,
+            "capital_repayment": 0.7465,
+            "other": 0.0644,
+            "unclassified": 0
+          },
+          "post_tax": 2.7591,
+          "record_date": "14-Nov-25",
+          "source": "https://www.indigrid.co.in/investor/unit-information/"
+        },
+        {
+          "quarter": "Q3 FY26",
+          "total": 4,
+          "components": {
+            "interest": 2.9465,
+            "taxable_dividend": 0.0074,
+            "exempt_dividend": 0,
+            "capital_repayment": 1.0143,
+            "other": 0.0318,
+            "unclassified": 0
+          },
+          "post_tax": 2.8482,
+          "record_date": "17-Feb-26",
+          "source": "https://www.indigrid.co.in/investor/unit-information/"
+        },
+        {
+          "quarter": "Q4 FY26",
+          "total": 4,
+          "components": {
+            "interest": 2.5218,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0.0964,
+            "capital_repayment": 1.2376,
+            "other": 0.1442,
+            "unclassified": 0
+          },
+          "post_tax": 3.0165,
+          "record_date": "19-May-26",
+          "source": "https://nsearchives.nseindia.com/corporate/INDIGRID_14052026201609_finaloutcome.pdf"
+        }
+      ],
+      "quarters_tracked": true,
+      "flags": "FY27 guidance +3%; results 22-Jul-26"
+    },
+    {
+      "ticker": "PGINVIT",
+      "exchange_ticker": "NSE:PGINVIT",
+      "name": "PGInvIT",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 12,
+      "dpu_fy_from_quarters": 12,
+      "fy27_guidance": 12,
+      "tax_status": "MIXED — taxable + exempt slices every quarter",
+      "quarters": [
+        {
+          "quarter": "Q1 FY26",
+          "total": 3,
+          "components": {
+            "interest": 1.76,
+            "taxable_dividend": 0.37,
+            "exempt_dividend": 0.07,
+            "capital_repayment": 0.78,
+            "other": 0.02,
+            "unclassified": 0
+          },
+          "post_tax": 2.1808,
+          "record_date": "08-Aug-25",
+          "source": "https://nsearchives.nseindia.com/corporate/PGINVIT_05082025121804_OUTCOME.pdf"
+        },
+        {
+          "quarter": "Q2 FY26",
+          "total": 3,
+          "components": {
+            "interest": 1.77,
+            "taxable_dividend": 0.53,
+            "exempt_dividend": 0.13,
+            "capital_repayment": 0.56,
+            "other": 0.01,
+            "unclassified": 0
+          },
+          "post_tax": 2.1195,
+          "record_date": "10-Nov-25",
+          "source": "https://trendlyne.com/equity/Dividend/PGINVIT/481511/powergrid-infrastructure-investment-trust-dividend/"
+        },
+        {
+          "quarter": "Q3 FY26",
+          "total": 3,
+          "components": {
+            "interest": 1.84,
+            "taxable_dividend": 0.5,
+            "exempt_dividend": 0.14,
+            "capital_repayment": 0.51,
+            "other": 0.01,
+            "unclassified": 0
+          },
+          "post_tax": 2.103,
+          "record_date": "12-Feb-26",
+          "source": "https://nsearchives.nseindia.com/corporate/PGINVIT_09022026153540_OUTCOME.pdf"
+        },
+        {
+          "quarter": "Q4 FY26",
+          "total": 3,
+          "components": {
+            "interest": 1.71,
+            "taxable_dividend": 0.41,
+            "exempt_dividend": 0.09,
+            "capital_repayment": 0.77,
+            "other": 0.02,
+            "unclassified": 0
+          },
+          "post_tax": 2.186,
+          "record_date": "20-May-26",
+          "source": "https://nsearchives.nseindia.com/corporate/PGINVIT_15052026154901_INTIMATION.pdf"
+        }
+      ],
+      "quarters_tracked": true,
+      "flags": "ADDED (public InvIT, not in SK sheet); FY20-25 history backfill pending; FY28 revenue dip flagged by mgmt; results 28-Jul-26"
+    },
+    {
+      "ticker": "CAPINVIT",
+      "exchange_ticker": "NSE:CAPINVIT",
+      "name": "Capital Infra",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 11.6,
+      "dpu_fy_from_quarters": 11.6,
+      "fy27_guidance": 9.125,
+      "tax_status": "MOSTLY TAXABLE — 10/12 SPVs opted 115BAA",
+      "quarters": [
+        {
+          "quarter": "Q1 FY26",
+          "total": 3.61,
+          "components": {
+            "interest": 0.06,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0,
+            "capital_repayment": 3.55,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 3.5866,
+          "record_date": "03-Jun-25 & 11-Aug-25",
+          "source": "https://capitalinfratrust.com/pdf/Capital%20Infra%20Trust_Q1FY26_Investor%20Presentation_Final_File_06-Aug-25.pdf"
+        },
+        {
+          "quarter": "Q2 FY26",
+          "total": 3.25,
+          "components": {
+            "interest": 2.52,
+            "taxable_dividend": 0.71,
+            "exempt_dividend": 0,
+            "capital_repayment": 0,
+            "other": 0.02,
+            "unclassified": 0
+          },
+          "post_tax": 2.0125,
+          "record_date": "19-Nov-25",
+          "source": "https://nsearchives.nseindia.com/corporate/CAPINVIT_14112025132746_Outcome.pdf"
+        },
+        {
+          "quarter": "Q3 FY26",
+          "total": 2.34,
+          "components": {
+            "interest": 0.41,
+            "taxable_dividend": 0.59,
+            "exempt_dividend": 0.06,
+            "capital_repayment": 0.38,
+            "other": 0.01,
+            "unclassified": 0.89
+          },
+          "post_tax": 1.6213,
+          "record_date": "10-Feb-26",
+          "source": "https://capitalinfratrust.com/pdf/SE_Intimation_Q3_Transcript.pdf"
+        },
+        {
+          "quarter": "Q4 FY26",
+          "total": 2.4,
+          "components": {
+            "interest": 0.99,
+            "taxable_dividend": 0.63,
+            "exempt_dividend": 0,
+            "capital_repayment": 0.77,
+            "other": 0.01,
+            "unclassified": 0
+          },
+          "post_tax": 1.7879,
+          "record_date": "22-May-26",
+          "source": "https://nsearchives.nseindia.com/corporate/CAPINVIT_19052026201420_SE_Intimation_Record_Date.pdf"
+        }
+      ],
+      "quarters_tracked": true,
+      "flags": "ADDED; listed 17-Jan-25, FY25 partial-year backfill pending; FY27 guide ₹9.00-9.25 (cut)"
+    },
+    {
+      "ticker": "RIIT",
+      "exchange_ticker": "NSE:RIIT",
+      "name": "Raajmarg (NHAI)",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": null,
+      "dpu_fy_from_quarters": null,
+      "fy27_guidance": null,
+      "tax_status": "n/a — no distribution yet",
+      "quarters": [],
+      "quarters_tracked": false,
+      "flags": "ADDED; listed 24-Mar-26; tolling from 1-Apr-26; maiden payout in FY27"
+    },
+    {
+      "ticker": "CITIUSINVT",
+      "exchange_ticker": "NSE:CITIUSINVT",
+      "name": "Citius TransNet",
+      "class": "invit",
+      "fiscal_year": "FY26",
+      "dpu_fy": null,
+      "dpu_fy_from_quarters": null,
+      "fy27_guidance": null,
+      "tax_status": "n/a — no distribution yet",
+      "quarters": [],
+      "quarters_tracked": false,
+      "flags": "ADDED; listed 29-Apr-26; SPVs acquired 21-Apr-26; maiden payout in FY27"
+    }
+  ],
+  "reits": [
+    {
+      "ticker": "EMBASSY",
+      "exchange_ticker": "NSE:EMBASSY",
+      "name": "Embassy",
+      "class": "reit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 25.28,
+      "dpu_fy_from_quarters": 25.28,
+      "fy27_guidance": null,
+      "tax_status": "EXEMPT — SPVs not opted 115BAA",
+      "quarters": [
+        {
+          "quarter": "Q1 FY26",
+          "total": 5.8,
+          "components": {
+            "interest": 0.18,
+            "taxable_dividend": 0,
+            "exempt_dividend": 2.01,
+            "capital_repayment": 3.61,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 5.7298,
+          "record_date": "05-Aug-25",
+          "source": "https://www.embassyofficeparks.com/investors/distribution-history/"
+        },
+        {
+          "quarter": "Q2 FY26",
+          "total": 6.51,
+          "components": {
+            "interest": 0.66,
+            "taxable_dividend": 0,
+            "exempt_dividend": 1.97,
+            "capital_repayment": 3.88,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 6.2526,
+          "record_date": "08-Nov-25",
+          "source": "https://www.embassyofficeparks.com/investors/distribution-history/"
+        },
+        {
+          "quarter": "Q3 FY26",
+          "total": 6.47,
+          "components": {
+            "interest": 0.66,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0.71,
+            "capital_repayment": 5.1,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 6.2126,
+          "record_date": "11-Feb-26",
+          "source": "https://www.embassyofficeparks.com/investors/distribution-history/"
+        },
+        {
+          "quarter": "Q4 FY26",
+          "total": 6.5,
+          "components": {
+            "interest": 0.14,
+            "taxable_dividend": 0,
+            "exempt_dividend": 1.39,
+            "capital_repayment": 4.97,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 6.4454,
+          "record_date": "30-Apr-26",
+          "source": "https://www.embassyofficeparks.com/investors/distribution-history/"
+        }
+      ],
+      "quarters_tracked": true,
+      "flags": "CMP 13-Jul-26; most tax-efficient large REIT"
+    },
+    {
+      "ticker": "MINDSPACE",
+      "exchange_ticker": "NSE:MINDSPACE",
+      "name": "Mindspace",
+      "class": "reit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 24.09,
+      "dpu_fy_from_quarters": 24.09,
+      "fy27_guidance": null,
+      "tax_status": "EXEMPT — no SPV opted 115BAA",
+      "quarters": [
+        {
+          "quarter": "Q1 FY26",
+          "total": 5.79,
+          "components": {
+            "interest": 0.1,
+            "taxable_dividend": 0,
+            "exempt_dividend": 3.19,
+            "capital_repayment": 2.47,
+            "other": 0.03,
+            "unclassified": 0
+          },
+          "post_tax": 5.751,
+          "record_date": "07-Aug-25",
+          "source": "https://www.theweek.in/wire-updates/business/2025/08/04/dcm93-biz-results-mindspace-reit.html"
+        },
+        {
+          "quarter": "Q2 FY26",
+          "total": 5.83,
+          "components": {
+            "interest": 0.03,
+            "taxable_dividend": 0,
+            "exempt_dividend": 3.02,
+            "capital_repayment": 2.77,
+            "other": 0.01,
+            "unclassified": 0
+          },
+          "post_tax": 5.8183,
+          "record_date": "08-Nov-25",
+          "source": "https://www.mindspacereit.com/wp-content/uploads/2025/11/Investor-Presentation_Q2-FY26-1.pdf"
+        },
+        {
+          "quarter": "Q3 FY26",
+          "total": 5.83,
+          "components": {
+            "interest": 0.05,
+            "taxable_dividend": 0,
+            "exempt_dividend": 3.12,
+            "capital_repayment": 2.66,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 5.8105,
+          "record_date": "30-Jan-26",
+          "source": "https://www.mindspacereit.com/wp-content/uploads/2026/01/Press-Release-n-Earnings-Presentation-Dec-31-2025.pdf"
+        },
+        {
+          "quarter": "Q4 FY26",
+          "total": 6.64,
+          "components": {
+            "interest": 0.02,
+            "taxable_dividend": 0,
+            "exempt_dividend": 3.35,
+            "capital_repayment": 3.26,
+            "other": 0.01,
+            "unclassified": 0
+          },
+          "post_tax": 6.6322,
+          "record_date": "05-May-26",
+          "source": "https://www.mindspacereit.com/wp-content/uploads/2026/04/Investor-Presentation_Q4-FY26.pdf"
+        }
+      ],
+      "quarters_tracked": true,
+      "flags": "⚠ FY21 = H2 only (listed Aug-20); FY22 company states \"c.18.4\"; results 27-Jul-26"
+    },
+    {
+      "ticker": "BIRET",
+      "exchange_ticker": "NSE:BIRET",
+      "name": "Brookfield",
+      "class": "reit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 21.4,
+      "dpu_fy_from_quarters": 21.4,
+      "fy27_guidance": null,
+      "tax_status": "EXEMPT — SPVs not opted 115BAA",
+      "quarters": [
+        {
+          "quarter": "Q1 FY26",
+          "total": 5.25,
+          "components": {
+            "interest": 1.91,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0.63,
+            "capital_repayment": 2.71,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 4.5051,
+          "record_date": "06-Aug-25",
+          "source": "https://nsearchives.nseindia.com/corporate/BIRET_01082025215405_OutcomeofBoardMeetingOtherMatters.pdf"
+        },
+        {
+          "quarter": "Q2 FY26",
+          "total": 5.25,
+          "components": {
+            "interest": 0,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0,
+            "capital_repayment": 0,
+            "other": 0,
+            "unclassified": 5.25
+          },
+          "post_tax": 3.2025,
+          "record_date": "08-Nov-25",
+          "source": "https://media.brookfieldindiareit.in/Press_Release_Q2_2026_fc64cc4ee9.pdf"
+        },
+        {
+          "quarter": "Q3 FY26",
+          "total": 5.4,
+          "components": {
+            "interest": 1.86,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0.94,
+            "capital_repayment": 2.6,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 4.6746,
+          "record_date": "03-Feb-26",
+          "source": "https://media.brookfieldindiareit.in/BIRET_Q3_FY_2026_Investor_Presentation_03ddb5dd08.pdf"
+        },
+        {
+          "quarter": "Q4 FY26",
+          "total": 5.5,
+          "components": {
+            "interest": 1.66,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0.88,
+            "capital_repayment": 2.96,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 4.8526,
+          "record_date": "14-May-26",
+          "source": "https://media.brookfieldindiareit.in/BIRET_Q4_FY_2026_Investor_Presentation_5bbca64a61.pdf"
+        }
+      ],
+      "quarters_tracked": true,
+      "flags": "FY21 nil — first payout (Feb→Jun-21 period) counted in FY22; ⚠ Q2 FY26 split unpublished, post-tax conservative"
+    },
+    {
+      "ticker": "NXST",
+      "exchange_ticker": "NSE:NXST",
+      "name": "Nexus Select",
+      "class": "reit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 9.081,
+      "dpu_fy_from_quarters": 9.081,
+      "fy27_guidance": 9.9,
+      "tax_status": "EXEMPT — 71% of FY26 NDCF tax-free at distribution",
+      "quarters": [
+        {
+          "quarter": "Q1 FY26",
+          "total": 2.23,
+          "components": {
+            "interest": 0.642,
+            "taxable_dividend": 0,
+            "exempt_dividend": 1.299,
+            "capital_repayment": 0.282,
+            "other": 0.007,
+            "unclassified": 0
+          },
+          "post_tax": 1.9796,
+          "record_date": "04-Aug-25",
+          "source": "https://www.nexusselecttrust.com/nexus-distrubution-history"
+        },
+        {
+          "quarter": "Q2 FY26",
+          "total": 2.198,
+          "components": {
+            "interest": 0.623,
+            "taxable_dividend": 0,
+            "exempt_dividend": 1.233,
+            "capital_repayment": 0.338,
+            "other": 0.004,
+            "unclassified": 0
+          },
+          "post_tax": 1.955,
+          "record_date": "10-Nov-25",
+          "source": "https://www.nexusselecttrust.com/nexus-distrubution-history"
+        },
+        {
+          "quarter": "Q3 FY26",
+          "total": 2.367,
+          "components": {
+            "interest": 0.611,
+            "taxable_dividend": 0,
+            "exempt_dividend": 1.574,
+            "capital_repayment": 0.168,
+            "other": 0.014,
+            "unclassified": 0
+          },
+          "post_tax": 2.1287,
+          "record_date": "05-Feb-26",
+          "source": "https://www.nexusselecttrust.com/nexus-distrubution-history"
+        },
+        {
+          "quarter": "Q4 FY26",
+          "total": 2.286,
+          "components": {
+            "interest": 0.753,
+            "taxable_dividend": 0,
+            "exempt_dividend": 1.28,
+            "capital_repayment": 0.245,
+            "other": 0.008,
+            "unclassified": 0
+          },
+          "post_tax": 1.9923,
+          "record_date": "15-May-26",
+          "source": "https://www.nexusselecttrust.com/nexus-distrubution-history"
+        }
+      ],
+      "quarters_tracked": true,
+      "flags": "⚠ FY24 7.08 (PR) vs 7.07 (site sum); FY25 8.36 (site) vs 8.35 (ICICI); FY27 guide ₹9.8-10.0"
+    },
+    {
+      "ticker": "KRT",
+      "exchange_ticker": "NSE:KRT",
+      "name": "Knowledge Realty",
+      "class": "reit",
+      "fiscal_year": "FY26",
+      "dpu_fy": 4.74,
+      "dpu_fy_from_quarters": 4.74,
+      "fy27_guidance": null,
+      "tax_status": "EXEMPT — decks label dividend \"Tax Exempt\"",
+      "quarters": [
+        {
+          "quarter": "Q2 FY26",
+          "total": 1.556,
+          "components": {
+            "interest": 0.03,
+            "taxable_dividend": 0,
+            "exempt_dividend": 1.388,
+            "capital_repayment": 0.138,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 1.5443,
+          "record_date": "13-Nov-25",
+          "source": "https://www.knowledgerealtytrust.com/investor-relation/KRT-Q2-FY26-Press-Release.pdf"
+        },
+        {
+          "quarter": "Q3 FY26",
+          "total": 1.568,
+          "components": {
+            "interest": 0.125,
+            "taxable_dividend": 0,
+            "exempt_dividend": 1.082,
+            "capital_repayment": 0.361,
+            "other": 0,
+            "unclassified": 0
+          },
+          "post_tax": 1.5192,
+          "record_date": "10-Feb-26",
+          "source": "https://www.knowledgerealtytrust.com/investor-relation/Q3_Earnings_Presentation.pdf"
+        },
+        {
+          "quarter": "Q4 FY26",
+          "total": 1.616,
+          "components": {
+            "interest": 0.207,
+            "taxable_dividend": 0,
+            "exempt_dividend": 0.981,
+            "capital_repayment": 0.426,
+            "other": 0.002,
+            "unclassified": 0
+          },
+          "post_tax": 1.5353,
+          "record_date": "16-May-26",
+          "source": "https://nsearchives.nseindia.com/corporate/KRT_13052026142154_Press_Release_and_Earning_Presentation.pdf"
+        }
+      ],
+      "quarters_tracked": true,
+      "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
+    }
+  ]
+}
