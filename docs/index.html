@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DHFO Intelligence</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0b1020; --panel: #131a2e; --panel-2: #1a2340; --line: #26304f;
+    --ink: #e8ecf6; --muted: #93a0bf; --accent: #4f8cff;
+    --cheap: #29c98b; --rich: #ff6b6b; --fair: #d9b34a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  header.brand { padding: 22px 28px 16px; border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, #101731, #0b1020); }
+  header.brand h1 { margin: 0; font-size: 24px; letter-spacing: 0.5px; font-weight: 700; }
+  header.brand h1 .dot { color: var(--accent); }
+  header.brand .sub { margin-top: 4px; font-size: 13px; color: var(--muted); }
+  header.brand .meta { margin-top: 6px; font-size: 12px; color: var(--muted); }
+  header.brand .meta b { color: var(--ink); font-weight: 600; }
+  header.brand .auto { margin-top: 4px; font-size: 11.5px; color: var(--muted); }
+  header.brand .auto .live { color: var(--cheap); }
+  .wrap { padding: 20px 28px 60px; max-width: 1320px; margin: 0 auto; }
+
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-bottom: 20px; }
+  .kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .kpi .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .kpi .value { font-size: 24px; font-weight: 700; margin-top: 6px; }
+  .kpi .value small { font-size: 12.5px; color: var(--muted); font-weight: 500; display:block; margin-top:2px; }
+  .kpi .value.pos { color: var(--cheap); } .kpi .value.neg { color: var(--rich); }
+
+  /* min-width:0 lets a wide table scroll inside .table-scroll instead of forcing
+     the panel (a grid/flex child) to expand past the viewport and get clipped. */
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 18px 12px; margin-bottom: 20px; min-width: 0; }
+  .panel h2 { margin: 0 0 4px; font-size: 15px; font-weight: 600; }
+  .panel .hint { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  .chart-box { position: relative; height: 360px; }
+
+  .fallback-note { background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px 14px; margin-bottom: 18px; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+  .fallback-note b { color: var(--ink); } .fallback-note code { color: var(--ink); }
+
+  /* controls */
+  .controls { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-bottom:18px; }
+  .controls input[type=text], .controls input[type=number], .controls select {
+    background: var(--panel-2); border:1px solid var(--line); color: var(--ink);
+    border-radius:8px; padding:8px 11px; font-size:13px; outline:none; transition: border-color .15s, box-shadow .15s; }
+  .controls input:hover, .controls select:hover { border-color:#3a466b; }
+  .controls input:focus-visible, .controls select:focus-visible {
+    border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,140,255,0.28); }
+
+  /* Segmented toggle: active = filled accent, inactive = muted, hover lightens, focus ring */
+  .seg { display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  .seg button { background: var(--panel-2); color: var(--muted); border:none; padding:8px 16px;
+    font-size:13px; cursor:pointer; font-weight:600; transition: background .15s, color .15s; }
+  .seg button + button { border-left:1px solid var(--line); }
+  .seg button:hover:not(.active) { background:#243154; color: var(--ink); }
+  .seg button.active { background: var(--accent); color:#fff; }
+  .seg button:focus-visible { outline:none; box-shadow: inset 0 0 0 2px #cfe0ff; }
+
+  /* Plain button (Refresh, etc.) */
+  .btn { display:inline-flex; align-items:center; gap:6px; background: var(--panel-2); color: var(--ink);
+    border:1px solid var(--line); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:600;
+    cursor:pointer; transition: background .15s, border-color .15s; }
+  .btn:hover { background:#243154; border-color: var(--accent); }
+  .btn:active { transform: translateY(1px); }
+  .btn:focus-visible { outline:none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,140,255,0.3); }
+  .btn.busy { opacity:.6; pointer-events:none; }
+
+  .ctl-label { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; }
+
+  .whatif { display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+  .whatif .out { display:flex; gap:18px; flex-wrap:wrap; align-items:center; font-size:13px; }
+  .whatif .out .n { font-weight:700; font-size:16px; }
+  .whatif .out .lbl { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:0.5px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 9px 10px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  thead th { color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 11px;
+    letter-spacing: 0.5px; cursor: pointer; user-select: none; position: sticky; top: 0; background: var(--panel);
+    transition: color .12s, background .12s; }
+  thead th:hover { color: var(--ink); background: var(--panel-2); }
+  thead th.sorted { color: var(--accent); }
+  thead th:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; color: var(--ink); }
+  thead th .arrow { color: var(--accent); font-size: 10px; }
+  tbody tr { cursor: pointer; }
+  tbody tr:hover { background: var(--panel-2); }
+  tbody tr.selected { background: rgba(79,140,255,0.16); box-shadow: inset 3px 0 0 var(--accent); }
+  td.trust { font-weight: 700; }
+  td .sub { color: var(--muted); font-size: 11px; font-weight: 400; }
+
+  .tag { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.4px; }
+  .tag.cheap { background: rgba(41,201,139,0.15); color: var(--cheap); }
+  .tag.rich  { background: rgba(255,107,107,0.15); color: var(--rich); }
+  .tag.fair  { background: rgba(217,179,74,0.15); color: var(--fair); }
+  .tag.na    { background: rgba(147,160,191,0.12); color: var(--muted); }
+
+  .chip { display:inline-block; padding:1px 6px; border-radius:5px; font-size:10px; font-weight:600;
+    letter-spacing:0.3px; text-transform:uppercase; white-space:nowrap; margin-left:5px; }
+  .chip.ann { background: rgba(217,179,74,0.16); color: var(--fair); cursor:help; }
+
+  .src { display:inline-block; padding:1px 7px; border-radius:5px; font-size:10px; font-weight:600;
+    letter-spacing:0.3px; text-transform:uppercase; white-space:nowrap; }
+  .src.yahoo  { background: rgba(79,140,255,0.15); color: #7aa8ff; }
+  .src.nse    { background: rgba(41,201,139,0.15); color: var(--cheap); }
+  .src.manual { background: rgba(217,179,74,0.15); color: var(--fair); }
+  .src.none   { background: rgba(147,160,191,0.12); color: var(--muted); }
+  .src.flag   { background: rgba(255,107,107,0.18); color: var(--rich); cursor: help; }
+
+  /* Tables always stack full-width — InvITs, then REITs directly below.
+     (No 2-column grid: 10-col tables side-by-side either cram or leave dead space.) */
+  .two-col { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .legend { font-size: 12px; color: var(--muted); margin-top: 10px; }
+  .legend .tag, .legend .dotm { margin-right: 6px; }
+  .dotm { display:inline-block; width:10px; height:10px; border-radius:50%; vertical-align:middle; margin-right:4px; }
+  footer { padding: 20px 28px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); }
+  .loading { padding: 40px; text-align: center; color: var(--muted); }
+  .hidden { display: none; }
+
+  /* Never let the page itself scroll sideways; wide tables scroll inside .table-scroll. */
+  html, body { max-width: 100%; overflow-x: hidden; }
+  canvas { max-width: 100%; }
+
+  /* Tablet */
+  @media (max-width: 768px) {
+    .wrap { padding: 16px 16px 48px; }
+    header.brand { padding: 18px 16px 14px; }
+    .chart-box { height: 320px; }
+  }
+
+  /* Phone */
+  @media (max-width: 480px) {
+    header.brand { padding: 14px 14px 12px; }
+    header.brand h1 { font-size: 20px; }
+    .wrap { padding: 12px 12px 40px; }
+    .kpis { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .kpi { padding: 12px 13px; }
+    .kpi .value { font-size: 19px; }
+    .panel { padding: 14px 12px 10px; }
+    .chart-box { height: 300px; }
+    /* full-width controls that stack cleanly */
+    .controls, .whatif { gap: 8px; }
+    .controls input[type=text], .controls .seg, #wiTrust { flex: 1 1 100%; }
+    .controls .seg { display: flex; } .controls .seg button { flex: 1; }
+    .whatif .out { flex: 1 1 100%; }
+    th, td { padding: 7px 8px; font-size: 12px; }
+    footer { padding: 16px 14px; }
+  }
+</style>
+</head>
+<body>
+<header class="brand">
+  <h1>DHFO <span class="dot">Intelligence</span></h1>
+  <div class="sub">Market analysis only — no holdings/PII.</div>
+  <div class="meta" id="meta"></div>
+  <div class="auto" id="autoNote"></div>
+</header>
+
+<div class="wrap">
+  <div class="fallback-note">
+    <b>Price source, per trust (fallback chain):</b>
+    <span class="src yahoo">live-delayed</span> Yahoo &rarr;
+    <span class="src nse">live</span> NSE &rarr;
+    <span class="src manual">manual</span> snapshot (dated per row). A <b>sanity gate</b>
+    rejects any live price &gt;15% from the reference in <code>data/prices.json</code>;
+    rejected rows show <span class="src flag">⚠ adj?</span>. Partial-year trusts show an
+    <span class="chip ann">annualized</span> DPU scaled to a full year.
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="panel">
+    <div class="controls">
+      <span class="ctl-label">Filter</span>
+      <input type="text" id="filter" placeholder="Search name or symbol…" autocomplete="off" />
+      <div class="seg" id="classToggle">
+        <button data-c="all" class="active">All</button>
+        <button data-c="invit">InvITs</button>
+        <button data-c="reit">REITs</button>
+      </div>
+      <span id="filterCount" class="ctl-label"></span>
+      <button class="btn" id="refreshBtn" title="Re-fetch the latest snapshot" style="margin-left:auto">↻ Refresh</button>
+    </div>
+
+    <div class="whatif" style="border-top:1px solid var(--line); padding-top:14px; margin-top:2px;">
+      <span class="ctl-label">What-if</span>
+      <select id="wiTrust"></select>
+      <span class="ctl-label">price ₹</span>
+      <input type="number" id="wiPrice" step="0.1" min="0" style="width:110px" />
+      <div class="out" id="wiOut"><span class="lbl">enter a price…</span></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Ranked post-tax yield</h2>
+    <div class="hint">Post-tax DPU ÷ live price (bar), ranked highest first, with a dot marking the gross (pre-tax) yield — the bar-to-dot gap is the tax drag. Bars coloured cheap / rich vs the 3-yr median. Click to highlight its table row. Names marked <span class="chip ann">annualized</span> are scaled from a partial year.</div>
+    <div class="chart-box"><canvas id="ptChart"></canvas></div>
+    <div class="legend">
+      <span class="dotm" style="width:14px;height:9px;border-radius:2px;background:linear-gradient(90deg,var(--cheap),var(--rich))"></span>post-tax yield (bar) &nbsp;
+      <span class="dotm" style="background:var(--accent)"></span>gross / pre-tax yield (dot) &nbsp; · &nbsp;
+      <span class="tag cheap">CHEAP</span> <span class="tag rich">RICH</span> <span class="tag fair">FAIR</span> vs 3yr median
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Relative value — current yield vs 3yr / 5yr median</h2>
+    <div class="hint">Vertical bars show each trust's current (pre-tax) yield, coloured cheap / rich / fair vs its 3-yr median. Green dot = 3yr median, gold diamond = 5yr median. Click a bar to highlight its table row.</div>
+    <div class="chart-box"><canvas id="rvChart"></canvas></div>
+    <div class="legend">
+      <span class="dotm" style="background:var(--cheap)"></span>3yr median &nbsp;
+      <span class="dotm" style="width:9px;height:9px;background:var(--fair);border-radius:2px;transform:rotate(45deg)"></span>5yr median &nbsp;
+      <span class="dotm" style="width:14px;height:9px;border-radius:2px;background:var(--accent)"></span>current yield (bar) &nbsp; · &nbsp;
+      <span class="tag cheap">CHEAP</span> above &nbsp;<span class="tag rich">RICH</span> below &nbsp;<span class="tag fair">FAIR</span> at &nbsp;<span class="tag na">N/A</span> no median
+    </div>
+  </div>
+
+  <div class="two-col" id="tablesWrap">
+    <div class="panel" id="invitPanel">
+      <h2>InvITs</h2>
+      <div class="hint">Click a header to sort · click a row to highlight it in the charts.</div>
+      <div class="table-scroll"><table id="invitTable"></table></div>
+    </div>
+    <div class="panel" id="reitPanel">
+      <h2>REITs</h2>
+      <div class="hint">Click a header to sort · click a row to highlight it in the charts.</div>
+      <div class="table-scroll"><table id="reitTable"></table></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  DHFO Intelligence · Indian REITs &amp; InvITs · Market analysis only — no holdings, positions, cost or P&amp;L.
+  Static snapshot (built by scripts/build_static.py); the page re-fetches it every 5 minutes. Yields are indicative, not advice.
+</footer>
+
+<script>
+// ---------- config ----------
+const REFRESH_MS = 5 * 60 * 1000;   // auto-refresh every 5 minutes
+const DATA_URL = './data.json';     // same-folder static snapshot (no server needed)
+
+// ---------- formatting ----------
+const pct  = (x) => (x === null || x === undefined) ? "—" : (x * 100).toFixed(2) + "%";
+const money= (x) => (x === null || x === undefined) ? "—" : "₹" + Number(x).toFixed(2);
+const num  = (x, d = 2) => (x === null || x === undefined) ? "—" : Number(x).toFixed(d);
+const jclassify = (cur, med) => (cur == null || med == null) ? null : (cur > med ? "cheap" : (cur < med ? "rich" : "fair"));
+const SIGCOLOR = { cheap: "#29c98b", rich: "#ff6b6b", fair: "#d9b34a" };
+
+// ---------- state ----------
+let DATA = null;
+let ptChart = null, rvChart = null;
+let selectedTicker = null;
+let filterText = "";
+let classFilter = "all";
+let whatIfInit = false;
+const sortState = {};
+
+// ---------- helpers ----------
+function tagFor(signal) {
+  if (!signal) return '<span class="tag na">N/A</span>';
+  return `<span class="tag ${signal}">${signal.toUpperCase()}</span>`;
+}
+function symbolOf(t) { return /^\d+$/.test(t.ticker) ? null : t.ticker; } // never show raw numeric codes
+function annChip(t) {
+  if (!t.annualized) return "";
+  const title = `Annualized from ${t.n_quarters} of 4 quarters (reported ${num(t.dpu_fy_reported)} → full-year ${num(t.dpu_fy)})`;
+  return `<span class="chip ann" title="${title}">annualized</span>`;
+}
+function srcTag(source, asOf, rejected) {
+  let tag;
+  if (!source) tag = '<span class="src none">—</span>';
+  else if (source === 'yahoo')  tag = '<span class="src yahoo">live-delayed</span>';
+  else if (source === 'nse')    tag = '<span class="src nse">live</span>';
+  else if (source === 'manual') tag = `<span class="src manual">manual ${asOf || ''}</span>`;
+  else tag = `<span class="src none">${source}</span>`;
+  if (rejected) tag += ' <span class="src flag" title="A live price was rejected by the sanity gate (>15% from reference); fallback used instead">⚠ adj?</span>';
+  return tag;
+}
+function median(arr) {
+  const v = arr.filter(x => x != null).sort((a, b) => a - b);
+  if (!v.length) return null;
+  const m = Math.floor(v.length / 2);
+  return v.length % 2 ? v[m] : (v[m - 1] + v[m]) / 2;
+}
+function tooltipLines(t) {
+  return [
+    `Price: ${money(t.price)}` + (t.price_source ? ` (${t.price_source})` : ""),
+    `Pre-tax yield: ${pct(t.pre_tax_yield)}`,
+    `Post-tax yield: ${pct(t.post_tax_yield)}`,
+    `3yr median: ${pct(t.median_3yr_yield)}   5yr median: ${pct(t.median_5yr_yield)}`,
+    `vs 3yr: ${(t.signal_3yr || "n/a").toUpperCase()}` + (t.annualized ? "  · DPU annualized" : ""),
+  ];
+}
+
+// ---------- load (static snapshot, cache-busted) ----------
+async function fetchData() {
+  const resp = await fetch(`${DATA_URL}?t=${Date.now()}`, { cache: 'no-store' });
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  return resp.json();
+}
+
+function updateLastChecked() {
+  const el = document.getElementById('autoNote');
+  const now = new Date().toLocaleTimeString();
+  el.innerHTML = `<span class="live">●</span> Auto-refreshes every 5 min · last checked ${now}`;
+}
+
+async function load() {
+  DATA = await fetchData();
+  if (!whatIfInit) { initWhatIf(); whatIfInit = true; }  // build once; preserve user's what-if across refreshes
+  render();
+  updateLastChecked();
+}
+
+// ---------- filtering ----------
+function getVisible() {
+  return DATA.trusts.filter(t => {
+    if (classFilter !== "all" && t.class !== classFilter) return false;
+    if (filterText) {
+      const hay = `${t.name} ${symbolOf(t) || ""}`.toLowerCase();
+      if (!hay.includes(filterText.toLowerCase())) return false;
+    }
+    return true;
+  });
+}
+
+// ---------- render ----------
+function render() {
+  const meta = document.getElementById('meta');
+  const lastRefreshed = DATA.generated_at || DATA.refreshed_at;   // snapshot build time (IST)
+  meta.innerHTML =
+    `Last refreshed: <b>${lastRefreshed}</b> · Feed <b>${(DATA.feed || '').toUpperCase()}</b> · `
+    + `Snapshot data <b>${DATA.snapshot_as_of}</b> · Trusts <b>${DATA.trusts.length}</b>`
+    + (DATA.gsec_benchmark ? ` · G-sec bench <b>${pct(DATA.gsec_benchmark.pre_tax)}</b> pre / <b>${pct(DATA.gsec_benchmark.post_tax)}</b> post` : '');
+
+  renderKpis();
+  renderPtChart();
+  renderRvChart();
+  renderTables();
+}
+
+function renderKpis() {
+  const trusts = DATA.trusts;
+  const live = trusts.filter(t => t.price_source === 'yahoo' || t.price_source === 'nse').length;
+  const man  = trusts.filter(t => t.price_source === 'manual').length;
+  const un   = trusts.filter(t => !t.price_source).length;
+
+  const withPost = trusts.filter(t => t.post_tax_yield != null);
+  const medPost = median(withPost.map(t => t.post_tax_yield));
+
+  // Headline cheap/rich only from trusts with SOLID medians (>=3 FY, not unverified).
+  const solid = trusts.filter(t => t.median_reliable && t.pre_tax_yield != null && t.median_3yr_yield != null)
+    .map(t => ({ ...t, gap: t.pre_tax_yield - t.median_3yr_yield }))
+    .sort((a, b) => b.gap - a.gap);
+  const cheapest = solid[0], richest = solid[solid.length - 1];
+
+  const kpis = [
+    { label: 'Trusts tracked', value: `${trusts.length}`, sub: `${live} live · ${man} manual · ${un} unpriced` },
+    { label: 'Median post-tax yield', value: pct(medPost), sub: `${withPost.length} with tax split` },
+    { label: 'Cheapest vs 3yr median', value: cheapest ? cheapest.name : '—',
+      sub: cheapest ? `+${(cheapest.gap*100).toFixed(2)} pts · ${pct(cheapest.pre_tax_yield)}` : '', cls: 'pos' },
+    { label: 'Richest vs 3yr median', value: richest ? richest.name : '—',
+      sub: richest ? `${(richest.gap*100).toFixed(2)} pts · ${pct(richest.pre_tax_yield)}` : '', cls: 'neg' },
+  ];
+  document.getElementById('kpis').innerHTML = kpis.map(k => `
+    <div class="kpi"><div class="label">${k.label}</div>
+      <div class="value ${k.cls||''}">${k.value}<small>${k.sub||''}</small></div></div>`).join('');
+}
+
+function chartClickHandler(rowsRef) {
+  return (evt, els, chart) => {
+    const hit = chart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false);
+    if (hit.length) setSelected(rowsRef()[hit[0].index].ticker);
+  };
+}
+
+function renderPtChart() {
+  const rows = getVisible().filter(t => t.post_tax_yield != null)
+    .sort((a, b) => b.post_tax_yield - a.post_tax_yield);
+  const labels = rows.map(t => t.name + (t.annualized ? " *" : ""));
+  const values = rows.map(t => +(t.post_tax_yield * 100).toFixed(2));
+  const NA = "rgba(147,160,191,0.55)"; // grey for trusts with no 3yr median (distinct from the blue gross dot)
+  const colors = rows.map(t => {
+    const base = SIGCOLOR[t.signal_3yr] || NA;
+    return t.ticker === selectedTicker ? "#ffffff" : base;
+  });
+  const borders = rows.map(t => t.ticker === selectedTicker ? (SIGCOLOR[t.signal_3yr] || NA) : "transparent");
+  // gross (pre-tax) yield marker, placed on the same row as the post-tax bar
+  // (sits to the right of the bar end since gross > post-tax). y = category label.
+  const grossPts = rows.map((t, i) => ({ x: t.pre_tax_yield != null ? +(t.pre_tax_yield * 100).toFixed(2) : null, y: labels[i] }));
+  const grossRadius = rows.map(t => t.ticker === selectedTicker ? 7 : 5);
+
+  if (ptChart) ptChart.destroy();
+  ptChart = new Chart(document.getElementById('ptChart'), {
+    type: 'bar',
+    data: { labels, datasets: [
+      { label: 'post-tax', data: values, backgroundColor: colors, borderColor: borders, borderWidth: 2, borderRadius: 5, order: 2 },
+      { type: 'scatter', label: 'gross', data: grossPts, order: 1,
+        pointRadius: grossRadius, pointHoverRadius: 8, pointStyle: 'circle',
+        pointBackgroundColor: '#4f8cff', pointBorderColor: '#0b1020', pointBorderWidth: 1 },
+    ] },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      onClick: chartClickHandler(() => rows),
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: {
+          title: (items) => rows[items[0].dataIndex].name,
+          label: () => '', afterBody: (items) => tooltipLines(rows[items[0].dataIndex]),
+        } },
+      },
+      scales: {
+        x: { ticks: { color: '#93a0bf', callback: v => v + '%' }, grid: { color: '#26304f' }, beginAtZero: true },
+        y: { type: 'category', ticks: { color: '#e8ecf6' }, grid: { display: false } },
+      },
+    },
+  });
+}
+
+function renderRvChart() {
+  const rows = getVisible().filter(t => t.pre_tax_yield != null);
+  const labels = rows.map(t => t.name);
+  const P = (x) => x == null ? null : +(x * 100).toFixed(2);
+  const cur = rows.map(t => P(t.pre_tax_yield));
+  const m3  = rows.map(t => P(t.median_3yr_yield));
+  const m5  = rows.map(t => P(t.median_5yr_yield));
+  const barColors  = rows.map(t => SIGCOLOR[t.signal_3yr] || "rgba(147,160,191,0.55)"); // na -> grey
+  const barBorders = rows.map(t => t.ticker === selectedTicker ? "#ffffff" : "transparent");
+
+  if (rvChart) rvChart.destroy();
+  rvChart = new Chart(document.getElementById('rvChart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [
+        { type: 'bar', label: 'Current yield', data: cur, backgroundColor: barColors,
+          borderColor: barBorders, borderWidth: 2, borderRadius: 4, order: 3 },
+        { type: 'line', label: '3yr median', data: m3, showLine: false, pointRadius: 5,
+          pointStyle: 'circle', pointBackgroundColor: '#29c98b', pointBorderColor: '#0b1020', pointBorderWidth: 1, order: 1 },
+        { type: 'line', label: '5yr median', data: m5, showLine: false, pointRadius: 6,
+          pointStyle: 'rectRot', pointBackgroundColor: '#d9b34a', pointBorderColor: '#0b1020', pointBorderWidth: 1, order: 2 },
+      ],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      onClick: chartClickHandler(() => rows),
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: {
+          title: (items) => rows[items[0].dataIndex].name,
+          label: () => '', afterBody: (items) => tooltipLines(rows[items[0].dataIndex]),
+        } },
+      },
+      scales: {
+        x: { ticks: { color: '#e8ecf6', maxRotation: 60, minRotation: 40 }, grid: { display: false } },
+        y: { ticks: { color: '#93a0bf', callback: v => v + '%' }, grid: { color: '#26304f' } },
+      },
+    },
+  });
+}
+
+// ---------- tables ----------
+const COLS = [
+  { key: 'name', label: 'Trust', get: r => r.name, cell: r => {
+      const sym = symbolOf(r); const sub = [sym, r.tax_status].filter(Boolean).join(' · ');
+      return `<td class="trust">${r.name}<div class="sub">${sub}</div></td>`; } },
+  { key: 'price', label: 'Price', get: r => r.price, cell: r => `<td>${money(r.price)}</td>` },
+  { key: 'price_source', label: 'Source', get: r => r.price_source, cell: r => `<td>${srcTag(r.price_source, r.price_as_of, r.price_sanity_rejected)}</td>` },
+  { key: 'dpu_fy', label: 'DPU (FY)', get: r => r.dpu_fy, cell: r => `<td>${num(r.dpu_fy)}${annChip(r)}</td>` },
+  { key: 'pre_tax_yield', label: 'Pre-tax', get: r => r.pre_tax_yield, cell: r => `<td>${pct(r.pre_tax_yield)}</td>` },
+  { key: 'post_tax_yield', label: 'Post-tax', get: r => r.post_tax_yield, cell: r => `<td>${pct(r.post_tax_yield)}</td>` },
+  { key: 'median_3yr_yield', label: '3yr Med', get: r => r.median_3yr_yield, cell: r => `<td>${pct(r.median_3yr_yield)}</td>` },
+  { key: 'median_5yr_yield', label: '5yr Med', get: r => r.median_5yr_yield, cell: r => `<td>${pct(r.median_5yr_yield)}</td>` },
+  { key: 'signal_3yr', label: 'vs 3yr', get: r => r.signal_3yr, cell: r => `<td>${tagFor(r.signal_3yr)}</td>` },
+  { key: 'signal_5yr', label: 'vs 5yr', get: r => r.signal_5yr, cell: r => `<td>${tagFor(r.signal_5yr)}</td>` },
+];
+
+function renderTables() {
+  const vis = getVisible();
+  document.getElementById('invitPanel').classList.toggle('hidden', classFilter === 'reit');
+  document.getElementById('reitPanel').classList.toggle('hidden', classFilter === 'invit');
+  renderTable('invitTable', vis.filter(t => t.class === 'invit'));
+  renderTable('reitTable', vis.filter(t => t.class === 'reit'));
+  document.getElementById('filterCount').textContent = `${vis.length} shown`;
+}
+
+function renderTable(tableId, rows) {
+  const st = sortState[tableId] || (sortState[tableId] = { key: 'post_tax_yield', dir: -1 });
+  const sorted = [...rows].sort((a, b) => {
+    let av = st.get ? st.get(a) : a[st.key], bv = st.get ? st.get(b) : b[st.key];
+    if (av == null) return 1; if (bv == null) return -1;
+    if (typeof av === 'string') return av.localeCompare(bv) * st.dir;
+    return (av - bv) * st.dir;
+  });
+
+  const thead = '<thead><tr>' + COLS.map(c => {
+    const on = st.key === c.key;
+    const arrow = on ? `<span class="arrow">${st.dir < 0 ? '▼' : '▲'}</span>` : '';
+    const attrs = on ? ` class="sorted" aria-sort="${st.dir < 0 ? 'descending' : 'ascending'}"` : '';
+    return `<th data-key="${c.key}" tabindex="0" role="button"${attrs}>${c.label} ${arrow}</th>`;
+  }).join('') + '</tr></thead>';
+
+  const tbody = '<tbody>' + sorted.map(r => {
+    const sel = r.ticker === selectedTicker ? ' class="selected"' : '';
+    return `<tr data-ticker="${r.ticker}"${sel}>` + COLS.map(c => c.cell(r)).join('') + '</tr>';
+  }).join('') + '</tbody>';
+
+  const table = document.getElementById(tableId);
+  table.innerHTML = thead + tbody;
+  table.querySelectorAll('th').forEach(th => {
+    const doSort = () => {
+      const key = th.dataset.key;
+      const col = COLS.find(c => c.key === key);
+      if (st.key === key) st.dir *= -1; else { st.key = key; st.dir = -1; }
+      st.get = col.get;
+      renderTable(tableId, rows);
+    };
+    th.onclick = doSort;
+    th.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); doSort(); } };
+  });
+  table.querySelectorAll('tbody tr').forEach(tr => {
+    tr.onclick = () => setSelected(tr.dataset.ticker);
+  });
+}
+
+// ---------- selection / cross-highlight ----------
+function setSelected(ticker) {
+  selectedTicker = (selectedTicker === ticker) ? null : ticker;
+  renderPtChart(); renderRvChart(); renderTables();
+  if (selectedTicker) {
+    const row = document.querySelector(`tr[data-ticker="${CSS.escape(selectedTicker)}"]`);
+    if (row) row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+// ---------- what-if ----------
+function initWhatIf() {
+  const sel = document.getElementById('wiTrust');
+  sel.innerHTML = DATA.trusts.filter(t => t.dpu_fy != null)
+    .map(t => `<option value="${t.ticker}">${t.name}</option>`).join('');
+  const priceInput = document.getElementById('wiPrice');
+  const recalc = () => {
+    const t = DATA.trusts.find(x => x.ticker === sel.value);
+    const price = parseFloat(priceInput.value);
+    const out = document.getElementById('wiOut');
+    if (!t || !(price > 0)) { out.innerHTML = '<span class="lbl">enter a price…</span>'; return; }
+    const pre = t.dpu_fy / price;
+    const post = t.post_tax_dpu_fy != null ? t.post_tax_dpu_fy / price : null;
+    const s3 = jclassify(pre, t.median_3yr_yield), s5 = jclassify(pre, t.median_5yr_yield);
+    out.innerHTML =
+      `<div><span class="lbl">Pre-tax</span><div class="n">${pct(pre)}</div></div>` +
+      `<div><span class="lbl">Post-tax</span><div class="n">${post != null ? pct(post) : '—'}</div></div>` +
+      `<div><span class="lbl">vs 3yr (${pct(t.median_3yr_yield)})</span><div>${tagFor(s3)}</div></div>` +
+      `<div><span class="lbl">vs 5yr (${pct(t.median_5yr_yield)})</span><div>${tagFor(s5)}</div></div>` +
+      (t.annualized ? `<div><span class="lbl">note</span><div><span class="chip ann">annualized DPU</span></div></div>` : '');
+  };
+  sel.onchange = () => {
+    const t = DATA.trusts.find(x => x.ticker === sel.value);
+    if (t && t.price != null) priceInput.value = t.price.toFixed(2);
+    recalc();
+  };
+  priceInput.oninput = recalc;
+  // seed with the first trust's price
+  if (sel.value) sel.onchange();
+}
+
+// ---------- controls wiring ----------
+document.getElementById('filter').addEventListener('input', (e) => {
+  filterText = e.target.value.trim();
+  renderPtChart(); renderRvChart(); renderTables();
+});
+document.getElementById('classToggle').addEventListener('click', (e) => {
+  const btn = e.target.closest('button'); if (!btn) return;
+  classFilter = btn.dataset.c;
+  document.querySelectorAll('#classToggle button').forEach(b => b.classList.toggle('active', b === btn));
+  renderPtChart(); renderRvChart(); renderTables();
+});
+document.getElementById('refreshBtn').addEventListener('click', async (e) => {
+  const btn = e.currentTarget;
+  btn.classList.add('busy'); btn.textContent = '↻ Refreshing…';
+  try { await load(); } catch (err) { /* keep prior view */ }
+  finally { btn.classList.remove('busy'); btn.textContent = '↻ Refresh'; }
+});
+
+// ---------- boot + auto-refresh loop ----------
+load()
+  .then(() => {
+    // Re-fetch the snapshot on an interval; keep the last good view if a fetch fails.
+    setInterval(() => { load().catch(() => {}); }, REFRESH_MS);
+  })
+  .catch(err => {
+    document.querySelector('.wrap').innerHTML =
+      `<div class="loading">Failed to load ./data.json (${err}).<br>` +
+      `Serve this folder over HTTP (e.g. <code>python -m http.server</code> in <code>docs/</code>) — ` +
+      `browsers block <code>fetch()</code> of local files opened via <code>file://</code>.</div>`;
+  });
+</script>
+</body>
+</html>
