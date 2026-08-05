@@ -1,6 +1,6 @@
 {
   "snapshot_as_of": "14-Jul-2026",
-  "refreshed_at": "05-Aug-2026 11:58 IST",
+  "refreshed_at": "05-Aug-2026 12:08 IST",
   "currency": "INR",
   "feed": "chain",
   "gsec_benchmark": {
@@ -56,12 +56,12 @@
       "annualization_factor": 1.0,
       "tax_status": "n/a — component splits not tracked",
       "quarters_tracked": false,
-      "price": 157.11000061035156,
+      "price": 157.1199951171875,
       "price_source": "yahoo",
       "price_as_of": "05-Aug-2026",
       "price_reference": 148.06,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.08764559828467552,
+      "pre_tax_yield": 0.08764002309018457,
       "post_tax_yield": null,
       "median_3yr_yield": 0.0783,
       "median_5yr_yield": 0.047,
@@ -137,13 +137,13 @@
       "annualization_factor": 1.0,
       "tax_status": "TAXABLE — all SPVs opted 115BAA (dividend nil/tiny FY26)",
       "quarters_tracked": true,
-      "price": 132.0,
+      "price": 132.0500030517578,
       "price_source": "yahoo",
       "price_as_of": "05-Aug-2026",
       "price_reference": 129.8,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.10227272727272728,
-      "post_tax_yield": 0.079024,
+      "pre_tax_yield": 0.10223399990917525,
+      "post_tax_yield": 0.07899407617515494,
       "median_3yr_yield": null,
       "median_5yr_yield": null,
       "median_reliable": false,
@@ -353,7 +353,7 @@
       "annualization_factor": 1.0,
       "tax_status": "n/a — no distribution yet",
       "quarters_tracked": false,
-      "price": 109.4000015258789,
+      "price": 109.01000213623047,
       "price_source": "yahoo",
       "price_as_of": "05-Aug-2026",
       "price_reference": null,
@@ -503,5 +503,5 @@
       "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
     }
   ],
-  "generated_at": "05-Aug-2026 11:58 IST"
+  "generated_at": "05-Aug-2026 12:08 IST"
 }
