@@ -1,6 +1,6 @@
 {
   "snapshot_as_of": "14-Jul-2026",
-  "refreshed_at": "06-Aug-2026 15:51 IST",
+  "refreshed_at": "06-Aug-2026 23:53 IST",
   "currency": "INR",
   "feed": "chain",
   "gsec_benchmark": {
@@ -488,13 +488,13 @@
       "annualization_factor": 1.3333,
       "tax_status": "EXEMPT — decks label dividend \"Tax Exempt\"",
       "quarters_tracked": true,
-      "price": 117.4000015258789,
-      "price_source": "yahoo",
-      "price_as_of": "06-Aug-2026",
+      "price": 115.89,
+      "price_source": "manual",
+      "price_as_of": "14-Jul-2026",
       "price_reference": 115.89,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.053833048704065474,
-      "post_tax_yield": 0.052229641569879824,
+      "pre_tax_yield": 0.05453447234446458,
+      "post_tax_yield": 0.052910173440331346,
       "median_3yr_yield": 0.0409,
       "median_5yr_yield": 0.0409,
       "median_reliable": false,
@@ -503,5 +503,5 @@
       "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
     }
   ],
-  "generated_at": "06-Aug-2026 15:51 IST"
+  "generated_at": "06-Aug-2026 23:53 IST"
 }
