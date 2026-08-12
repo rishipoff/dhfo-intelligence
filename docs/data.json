@@ -1,6 +1,6 @@
 {
   "snapshot_as_of": "14-Jul-2026",
-  "refreshed_at": "13-Aug-2026 00:01 IST",
+  "refreshed_at": "13-Aug-2026 04:05 IST",
   "currency": "INR",
   "feed": "chain",
   "gsec_benchmark": {
@@ -245,13 +245,13 @@
       "annualization_factor": 1.0,
       "tax_status": "TAXABLE generally — SPVs ex-PrKTCL/TSETPL opted 115BAA",
       "quarters_tracked": true,
-      "price": 178.17999267578125,
-      "price_source": "yahoo",
-      "price_as_of": "13-Aug-2026",
+      "price": 178.8,
+      "price_source": "manual",
+      "price_as_of": "14-Jul-2026",
       "price_reference": 178.8,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.08979683835274266,
-      "post_tax_yield": 0.06701256376032481,
+      "pre_tax_yield": 0.08948545861297538,
+      "post_tax_yield": 0.06678019082774049,
       "median_3yr_yield": 0.1061906913691821,
       "median_5yr_yield": 0.10016322896572191,
       "median_reliable": true,
@@ -503,5 +503,5 @@
       "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
     }
   ],
-  "generated_at": "13-Aug-2026 00:01 IST"
+  "generated_at": "13-Aug-2026 04:05 IST"
 }
