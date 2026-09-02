@@ -1,6 +1,6 @@
 {
   "snapshot_as_of": "14-Jul-2026",
-  "refreshed_at": "02-Sep-2026 14:14 IST",
+  "refreshed_at": "02-Sep-2026 14:24 IST",
   "currency": "INR",
   "feed": "chain",
   "gsec_benchmark": {
@@ -299,13 +299,13 @@
       "annualization_factor": 1.0,
       "tax_status": "MOSTLY TAXABLE — 10/12 SPVs opted 115BAA",
       "quarters_tracked": true,
-      "price": 76.3499984741211,
+      "price": 76.5,
       "price_source": "yahoo",
       "price_as_of": "02-Sep-2026",
       "price_reference": 73.79,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.15193189563627602,
-      "post_tax_yield": 0.11798580458457171,
+      "pre_tax_yield": 0.15163398692810456,
+      "post_tax_yield": 0.11775445751633985,
       "median_3yr_yield": 0.1572,
       "median_5yr_yield": 0.1572,
       "median_reliable": false,
@@ -503,5 +503,5 @@
       "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
     }
   ],
-  "generated_at": "02-Sep-2026 14:14 IST"
+  "generated_at": "02-Sep-2026 14:24 IST"
 }
