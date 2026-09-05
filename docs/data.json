@@ -1,6 +1,6 @@
 {
   "snapshot_as_of": "14-Jul-2026",
-  "refreshed_at": "05-Sep-2026 00:37 IST",
+  "refreshed_at": "05-Sep-2026 10:28 IST",
   "currency": "INR",
   "feed": "chain",
   "gsec_benchmark": {
@@ -272,13 +272,13 @@
       "annualization_factor": 1.0,
       "tax_status": "MIXED — taxable + exempt slices every quarter",
       "quarters_tracked": true,
-      "price": 100.5,
+      "price": 101.16999816894531,
       "price_source": "yahoo",
       "price_as_of": "05-Sep-2026",
       "price_reference": 97.0,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.11940298507462686,
-      "post_tax_yield": 0.08546638805970148,
+      "pre_tax_yield": 0.11861223897583766,
+      "post_tax_yield": 0.08490038702636404,
       "median_3yr_yield": 0.13305244483867393,
       "median_5yr_yield": 0.12670256572695598,
       "median_reliable": true,
@@ -461,13 +461,13 @@
       "annualization_factor": 1.0,
       "tax_status": "EXEMPT — 71% of FY26 NDCF tax-free at distribution",
       "quarters_tracked": true,
-      "price": 167.8000030517578,
+      "price": 165.88999938964844,
       "price_source": "yahoo",
       "price_as_of": "05-Sep-2026",
       "price_reference": 165.02,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.05411799663197247,
-      "post_tax_yield": 0.04800768685037048,
+      "pre_tax_yield": 0.05474109369709634,
+      "post_tax_yield": 0.0485604317899749,
       "median_3yr_yield": 0.06021619470787188,
       "median_5yr_yield": null,
       "median_reliable": true,
@@ -503,5 +503,5 @@
       "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
     }
   ],
-  "generated_at": "05-Sep-2026 00:37 IST"
+  "generated_at": "05-Sep-2026 10:28 IST"
 }
