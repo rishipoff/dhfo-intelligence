@@ -1,6 +1,6 @@
 {
   "snapshot_as_of": "14-Jul-2026",
-  "refreshed_at": "24-Sep-2026 00:37 IST",
+  "refreshed_at": "24-Sep-2026 06:48 IST",
   "currency": "INR",
   "feed": "chain",
   "gsec_benchmark": {
@@ -164,13 +164,13 @@
       "annualization_factor": 1.0,
       "tax_status": "EXEMPT — Q4 FY26 filing labels \"exempt dividend\"",
       "quarters_tracked": true,
-      "price": 64.5999984741211,
+      "price": 64.43000030517578,
       "price_source": "yahoo",
       "price_as_of": "24-Sep-2026",
       "price_reference": 62.0,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.10216718507577016,
-      "post_tax_yield": 0.07282662710719218,
+      "pre_tax_yield": 0.10243675258014565,
+      "post_tax_yield": 0.07301877972553837,
       "median_3yr_yield": 0.11959934220361788,
       "median_5yr_yield": 0.11959934220361788,
       "median_reliable": true,
@@ -380,13 +380,13 @@
       "annualization_factor": 1.0,
       "tax_status": "EXEMPT — SPVs not opted 115BAA",
       "quarters_tracked": true,
-      "price": 440.9700012207031,
+      "price": 437.44000244140625,
       "price_source": "yahoo",
       "price_as_of": "24-Sep-2026",
       "price_reference": 447.99,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.05732816275487977,
-      "post_tax_yield": 0.055877723953534,
+      "pre_tax_yield": 0.057790782413380634,
+      "post_tax_yield": 0.056328639041877536,
       "median_3yr_yield": 0.06014894477622594,
       "median_5yr_yield": 0.06014894477622594,
       "median_reliable": true,
@@ -503,5 +503,5 @@
       "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
     }
   ],
-  "generated_at": "24-Sep-2026 00:37 IST"
+  "generated_at": "24-Sep-2026 06:48 IST"
 }
