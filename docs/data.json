@@ -1,6 +1,6 @@
 {
   "snapshot_as_of": "14-Jul-2026",
-  "refreshed_at": "14-Oct-2026 15:52 IST",
+  "refreshed_at": "14-Oct-2026 17:40 IST",
   "currency": "INR",
   "feed": "chain",
   "gsec_benchmark": {
@@ -380,13 +380,13 @@
       "annualization_factor": 1.0,
       "tax_status": "EXEMPT — SPVs not opted 115BAA",
       "quarters_tracked": true,
-      "price": 430.5199890136719,
-      "price_source": "yahoo",
-      "price_as_of": "14-Oct-2026",
+      "price": 447.99,
+      "price_source": "manual",
+      "price_as_of": "14-Jul-2026",
       "price_reference": 447.99,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.05871968931783372,
-      "post_tax_yield": 0.0572340440137322,
+      "pre_tax_yield": 0.05642983102301391,
+      "post_tax_yield": 0.05500212058304873,
       "median_3yr_yield": 0.06014894477622594,
       "median_5yr_yield": 0.06014894477622594,
       "median_reliable": true,
@@ -503,5 +503,5 @@
       "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
     }
   ],
-  "generated_at": "14-Oct-2026 15:52 IST"
+  "generated_at": "14-Oct-2026 17:40 IST"
 }
