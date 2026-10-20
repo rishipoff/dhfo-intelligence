@@ -1,6 +1,6 @@
 {
   "snapshot_as_of": "14-Jul-2026",
-  "refreshed_at": "20-Oct-2026 03:42 IST",
+  "refreshed_at": "20-Oct-2026 07:45 IST",
   "currency": "INR",
   "feed": "chain",
   "gsec_benchmark": {
@@ -164,13 +164,13 @@
       "annualization_factor": 1.0,
       "tax_status": "EXEMPT — Q4 FY26 filing labels \"exempt dividend\"",
       "quarters_tracked": true,
-      "price": 63.68000030517578,
+      "price": 63.2599983215332,
       "price_source": "yahoo",
       "price_as_of": "20-Oct-2026",
       "price_reference": 62.0,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.10364321558370918,
-      "post_tax_yield": 0.07387876849016943,
+      "pre_tax_yield": 0.1043313337830648,
+      "post_tax_yield": 0.07436927165391011,
       "median_3yr_yield": 0.11959934220361788,
       "median_5yr_yield": 0.11959934220361788,
       "median_reliable": true,
@@ -503,5 +503,5 @@
       "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
     }
   ],
-  "generated_at": "20-Oct-2026 03:42 IST"
+  "generated_at": "20-Oct-2026 07:45 IST"
 }
