@@ -1,6 +1,6 @@
 {
   "snapshot_as_of": "14-Jul-2026",
-  "refreshed_at": "28-Oct-2026 00:47 IST",
+  "refreshed_at": "28-Oct-2026 09:02 IST",
   "currency": "INR",
   "feed": "chain",
   "gsec_benchmark": {
@@ -380,18 +380,18 @@
       "annualization_factor": 1.0,
       "tax_status": "EXEMPT — SPVs not opted 115BAA",
       "quarters_tracked": true,
-      "price": 447.99,
-      "price_source": "manual",
-      "price_as_of": "14-Jul-2026",
+      "price": 417.3299865722656,
+      "price_source": "yahoo",
+      "price_as_of": "28-Oct-2026",
       "price_reference": 447.99,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.05642983102301391,
-      "post_tax_yield": 0.05500212058304873,
+      "pre_tax_yield": 0.06057556565162487,
+      "post_tax_yield": 0.05904296550167315,
       "median_3yr_yield": 0.06014894477622594,
       "median_5yr_yield": 0.06014894477622594,
       "median_reliable": true,
-      "signal_3yr": "rich",
-      "signal_5yr": "rich",
+      "signal_3yr": "cheap",
+      "signal_5yr": "cheap",
       "flags": "CMP 13-Jul-26; most tax-efficient large REIT"
     },
     {
@@ -407,13 +407,13 @@
       "annualization_factor": 1.0,
       "tax_status": "EXEMPT — no SPV opted 115BAA",
       "quarters_tracked": true,
-      "price": 485.17999267578125,
+      "price": 482.94000244140625,
       "price_source": "yahoo",
       "price_as_of": "28-Oct-2026",
       "price_reference": 493.0,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.04965167641629857,
-      "post_tax_yield": 0.049490911336992995,
+      "pre_tax_yield": 0.04988197266372187,
+      "post_tax_yield": 0.04972046191786175,
       "median_3yr_yield": 0.05558933379657778,
       "median_5yr_yield": 0.05558933379657778,
       "median_reliable": true,
@@ -503,5 +503,5 @@
       "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
     }
   ],
-  "generated_at": "28-Oct-2026 00:47 IST"
+  "generated_at": "28-Oct-2026 09:02 IST"
 }
