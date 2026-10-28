@@ -1,6 +1,6 @@
 {
   "snapshot_as_of": "14-Jul-2026",
-  "refreshed_at": "28-Oct-2026 11:24 IST",
+  "refreshed_at": "28-Oct-2026 11:34 IST",
   "currency": "INR",
   "feed": "chain",
   "gsec_benchmark": {
@@ -299,13 +299,13 @@
       "annualization_factor": 1.0,
       "tax_status": "MOSTLY TAXABLE — 10/12 SPVs opted 115BAA",
       "quarters_tracked": true,
-      "price": 77.19999694824219,
+      "price": 77.19000244140625,
       "price_source": "yahoo",
       "price_as_of": "28-Oct-2026",
       "price_reference": 73.79,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.1502590732973355,
-      "post_tax_yield": 0.11668674036398537,
+      "pre_tax_yield": 0.15027852873570488,
+      "post_tax_yield": 0.11670184888046865,
       "median_3yr_yield": 0.1572,
       "median_5yr_yield": 0.1572,
       "median_reliable": false,
@@ -488,13 +488,13 @@
       "annualization_factor": 1.3333,
       "tax_status": "EXEMPT — decks label dividend \"Tax Exempt\"",
       "quarters_tracked": true,
-      "price": 110.80000305175781,
+      "price": 110.86000061035156,
       "price_source": "yahoo",
       "price_as_of": "28-Oct-2026",
       "price_reference": 115.89,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.057039709620294414,
-      "post_tax_yield": 0.05534079269957855,
+      "pre_tax_yield": 0.05700883966448282,
+      "post_tax_yield": 0.055310842199539426,
       "median_3yr_yield": 0.0409,
       "median_5yr_yield": 0.0409,
       "median_reliable": false,
@@ -503,5 +503,5 @@
       "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
     }
   ],
-  "generated_at": "28-Oct-2026 11:24 IST"
+  "generated_at": "28-Oct-2026 11:34 IST"
 }
