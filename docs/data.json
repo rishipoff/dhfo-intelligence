@@ -1,6 +1,6 @@
 {
   "snapshot_as_of": "14-Jul-2026",
-  "refreshed_at": "09-Nov-2026 15:53 IST",
+  "refreshed_at": "09-Nov-2026 23:29 IST",
   "currency": "INR",
   "feed": "chain",
   "gsec_benchmark": {
@@ -272,13 +272,13 @@
       "annualization_factor": 1.0,
       "tax_status": "MIXED — taxable + exempt slices every quarter",
       "quarters_tracked": true,
-      "price": 105.37999725341797,
-      "price_source": "yahoo",
-      "price_as_of": "09-Nov-2026",
+      "price": 97.0,
+      "price_source": "manual",
+      "price_as_of": "14-Jul-2026",
       "price_reference": 97.0,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.11387360327161883,
-      "post_tax_yield": 0.08150856162336259,
+      "pre_tax_yield": 0.12371134020618557,
+      "post_tax_yield": 0.08855022680412371,
       "median_3yr_yield": 0.13305244483867393,
       "median_5yr_yield": 0.12670256572695598,
       "median_reliable": true,
@@ -503,5 +503,5 @@
       "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
     }
   ],
-  "generated_at": "09-Nov-2026 15:53 IST"
+  "generated_at": "09-Nov-2026 23:29 IST"
 }
