@@ -1,6 +1,6 @@
 {
   "snapshot_as_of": "14-Jul-2026",
-  "refreshed_at": "11-Nov-2026 14:35 IST",
+  "refreshed_at": "11-Nov-2026 14:46 IST",
   "currency": "INR",
   "feed": "chain",
   "gsec_benchmark": {
@@ -56,12 +56,12 @@
       "annualization_factor": 1.0,
       "tax_status": "n/a — component splits not tracked",
       "quarters_tracked": false,
-      "price": 153.0,
+      "price": 152.07000732421875,
       "price_source": "yahoo",
       "price_as_of": "11-Nov-2026",
       "price_reference": 148.06,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.09,
+      "pre_tax_yield": 0.09055040005779616,
       "post_tax_yield": null,
       "median_3yr_yield": 0.0783,
       "median_5yr_yield": 0.047,
@@ -137,13 +137,13 @@
       "annualization_factor": 1.0,
       "tax_status": "TAXABLE — all SPVs opted 115BAA (dividend nil/tiny FY26)",
       "quarters_tracked": true,
-      "price": 127.91000366210938,
+      "price": 126.12000274658203,
       "price_source": "yahoo",
       "price_as_of": "11-Nov-2026",
       "price_reference": 129.8,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.10554295687194237,
-      "post_tax_yield": 0.08155083809985077,
+      "pre_tax_yield": 0.10704091108470787,
+      "post_tax_yield": 0.08270827602945556,
       "median_3yr_yield": null,
       "median_5yr_yield": null,
       "median_reliable": false,
@@ -218,13 +218,13 @@
       "annualization_factor": 2.0,
       "tax_status": "⚠ not stated — treated TAXABLE (conservative)",
       "quarters_tracked": true,
-      "price": 103.04000091552734,
+      "price": 102.98999786376953,
       "price_source": "yahoo",
       "price_as_of": "11-Nov-2026",
       "price_reference": 103.95,
       "price_sanity_rejected": false,
-      "pre_tax_yield": 0.09704968857869135,
-      "post_tax_yield": 0.0712343231248353,
+      "pre_tax_yield": 0.09709680752909175,
+      "post_tax_yield": 0.07126890836243144,
       "median_3yr_yield": 0.016,
       "median_5yr_yield": 0.0096,
       "median_reliable": false,
@@ -503,5 +503,5 @@
       "flags": "Listed 18-Aug-25; FY26 = 3 quarters, annualised ~6.32"
     }
   ],
-  "generated_at": "11-Nov-2026 14:35 IST"
+  "generated_at": "11-Nov-2026 14:46 IST"
 }
